@@ -1,29 +1,54 @@
 @import 'scss/reset';
 @import 'scss/base';
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 body {
-  padding: 32px;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
-.hero {
-  height: 100%;
-  background: antiquewhite;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-
-  h1 {
-    font-size: calc(54vw * 100 / 1440);
-    margin-bottom: calc(12vw * 100 / 1440);
-  }
-
-  p {
-    font-size: calc(24vw * 100 / 1440);
-  }
+main {
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-a {
-  text-decoration: underline;
+header {
+  background: #f4f4f4;
+  text-align: center;
+  padding: 2em;
+}
+
+header img {
+  max-width: 96px;
+}
+
+header h1 {
+  font-size: 2.5em;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.new-member-form {
+  margin: 2em 0 4em 0;
+  text-align: center;
+}
+
+.member-item {
+  padding: 0.25em 0;
+}
+
+footer {
+  margin-top: 2em;
+  text-align: center;
+  color: #fff;
+  background: #f76c6c;
+  padding: 0.25em 0;
 }

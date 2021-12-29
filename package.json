@@ -1,17 +1,21 @@
 {
-  "name": "quick-parcel-project",
+  "name": "wild-challenge",
   "version": "1.0.0",
   "description": "",
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html",
     "start-multiple-entries": "parcel index.html centered.html what.html ",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "dev": "node-dev server.js"
   },
   "dependencies": {
     "assets": "^3.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
     "parcel-plugin-asset-copier": "^1.1.0",
     "parcel-plugin-html-root-syntax": "0.0.3",
+    "pg": "^8.7.1",
     "scss": "^0.2.4"
   },
   "devDependencies": {

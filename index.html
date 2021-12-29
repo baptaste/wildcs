@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Parcel Sandbox</title>
+    <title>Wild Challenge</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" type="text/css" href="src/styles.scss"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,28 +9,8 @@
     <!-- Robots -->
     <meta name="robots" content="noindex, nofollow">
     <!-- Device -->
-    <!-- <meta name="viwport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
     <meta name="format-detection" content="telephone=no">
-    <!-- Title -->
-    <title>Benjamin Code Scalpel</title>
-    <!-- Description -->
-    <meta name="description" content="Home description.">
-    <!-- Social -->
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Quick Parcel Project — Home">
-    <meta name="twitter:description" content="Home description.">
-    <meta name="twitter:image" content="#">
-    <!-- Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.example.com">
-    <meta property="og:title" content="Quick Parcel Project — Home">
-    <meta property="og:description" content="Home description.">
-    <meta property="og:image" content="#">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <!-- Favicon -->
     <meta name="theme-color" content="#fff">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,14 +18,37 @@
 </head>
 
 <body>
+    <!-- Header section -->
+<header>
+    <h1>
+      <img src="https://www.wildcodeschool.com/assets/logo_main-e4f3f744c8e717f1b7df3858dce55a86c63d4766d5d9a7f454250145f097c2fe.png" alt="Wild Code School logo" />
+      Les Argonautes
+    </h1>
+  </header>
 
-<div class="hero">
-    <h1>Quick Parcel Project by Benjamin Code</h1>
-    <p class="description">
-        This is Benjamin Code's <a href="https://github.com/bdebon/quick-parcel-project" target="_blank">quick starter project</a> running on Parcel.js v1 to maximise compatibilities with codesandbox.
-    </p>
+  <!-- Main section -->
+  <main>
 
-</div>
+    <!-- New member form -->
+    <h2>Ajouter un(e) Argonaute</h2>
+    <form class="new-member-form">
+      <label for="name">Nom de l&apos;Argonaute</label>
+      <input id="name" name="name" type="text" placeholder="Charalampos" />
+      <button type="submit">Envoyer</button>
+    </form>
+
+    <!-- Member list -->
+    <h2>Membres de l'équipage</h2>
+    <section class="member-list">
+      <div class="member-item">Eleftheria</div>
+      <div class="member-item">Gennadios</div>
+      <div class="member-item">Lysimachos</div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Réalisé par Jason en Anthestérion de l'an 515 avant JC</p>
+  </footer>
 
 
 <script type="module" src="src/index.ts"></script>
