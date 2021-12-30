@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const controller =  require('./dataMapper');
 
-// const mainController = require('./controllers/mainController');
-
-// router.get('/', mainController.homePage);
-// router.get('/details/:id', mainController.detailPokemon);
-// router.get('/types', mainController.getType);
+router.get('/members', controller.getAllMembers);
 
 module.exports = router;
