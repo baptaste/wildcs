@@ -1,7 +1,18 @@
 import axios from 'axios'
 
-const memberItems = document.querySelectorAll('.member-item');
-let members = [];
+const memberList = document.querySelector('.member-list'),
+      form = document.querySelector('.new-member-form'),
+      formInput = document.querySelector('#name');
+
+let members = [],
+    inputValue = '',
+    requestError = false;
+
+function init() {
+  readMembersValues();
+  handleInputChange();
+  handleFormSubmit();
+}
 
 async function getMembersFromAPI() {
   try {
@@ -12,20 +23,98 @@ async function getMembersFromAPI() {
   }
 }
 
-function readMembersValue() {
+function readMembersValues() {
   getMembersFromAPI()
   .then((res) => {
-    console.log('res :' , res);
-    members = res;
+    members = res
   })
   .finally(() => {
-    createMemberElems(members);
+    createMembersElems(members);
   })
 }
 
-function createMemberElems(members) {
-  const memberNames  = members.map((member) => member.name)
-  memberItems.forEach((item, i) => item.innerText = memberNames[i])
+function createMembersElems(members) {
+  const memberNames = members.map((member) => member.name);
+
+  members.map((member, i) => (
+    member = document.createElement('div'),
+    member.classList.add('member-item'),
+    member.innerText = memberNames[i],
+    memberList.append(member)
+  ));
 }
 
-document.addEventListener('DOMContentLoaded', readMembersValue);
+function handleInputChange() {
+  formInput.addEventListener('change', (event) => {
+    inputValue = event.target.value
+  })
+}
+
+function handleFormSubmit() {
+  form.addEventListener('submit', createMember);
+}
+
+async function createMember(event) {
+  event.preventDefault();
+  const regex = inputValue.match(/^[a-zA-Z\s]*$/);
+
+  if (regex && inputValue !== '') {
+    const data = {
+      key: 'name',
+      value: inputValue,
+    }
+
+    try {
+     const res = await axios.post('http://localhost:3500/member/add', data, {
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (res.data.error && !requestError) {
+        createErrorMessage(res.data.error);
+        requestError = true
+      }
+
+      if (res.data.id) {
+        requestError = false
+        clearAll();
+        readMembersValues();
+      }
+
+    } catch (error) {
+      console.error(error);
+    }
+  } else {
+    alert('Seules des lettres sont autorisées.');
+  }
+}
+
+function clearMembers() {
+  members = []
+  memberList.innerHTML = ''
+}
+
+function clearFormInput() {
+  inputValue = ''
+  formInput.value = ''
+}
+
+function createErrorMessage(message) {
+  const errorField = document.createElement('p');
+  errorField.classList.add('errorField');
+  errorField.innerText = message
+  form.append(errorField);
+}
+
+function clearErrorMessage() {
+  if (requestError) document.querySelector('.errorField').innerHTML = ''
+}
+
+function clearAll() {
+  clearErrorMessage();
+  clearFormInput();
+  clearMembers();
+}
+
+document.addEventListener('DOMContentLoaded', init);
