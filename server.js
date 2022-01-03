@@ -8,7 +8,7 @@ const bodyParser = multer();
 const app = express();
 
 app.use(express.json());
-app.use(express.static('assets'));
+// app.use(express.static('assets'));
 app.use( cors('http://localhost:1234/') );
 app.use( bodyParser.none() );
 app.use(express.urlencoded({extended: true}));
