@@ -8,9 +8,28 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+#app {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header, main, footer {
+  width: 100%;
+}
+
+.new-member-form, .member-list {
+  width: 70%;
+}
+
 main {
   max-width: 960px;
   margin: 0 auto;
+  flex: 1;
+  padding: 2rem 0;
 }
 
 header {
@@ -31,14 +50,36 @@ h1, h2 {
   text-align: center;
 }
 
+.crew {
+  margin-bottom: 4rem;
+}
+
 label {
   display: block;
   margin-bottom: 0.5em;
+  text-align: left;
 }
 
 .new-member-form {
-  margin: 2em 0 4em 0;
+  margin: 2em auto 4em;
   text-align: center;
+
+  & *:not(.formBtn) {
+    text-align: center;
+    width: 100%;
+  }
+
+  .formBtn {
+    padding: .5rem 1.5rem;
+    background: #f4f4f4;
+    margin: 1rem auto 0;
+    border-radius: 7px;
+    transition: background-color 200ms ease-in-out;
+
+    &:hover {
+      background-color: hsl(0, 0%, 90%);
+    }
+  }
 }
 
 .errorField {
@@ -48,8 +89,35 @@ label {
   padding: .5rem 0;
 }
 
-.member-item {
-  padding: 0.25em 0;
+.member-list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  margin: 2rem auto 0;
+
+  &::before, &::after {
+    position: absolute;
+    content: '';
+    width: 10%;
+    height: 1px;
+    top: 50%;
+    transform: rotate(90deg);
+    background: #ddd;
+  }
+
+  &::before {
+    left: 28%;
+  }
+
+  &::after {
+    right: 29%;
+  }
+
+  .member-item {
+    height: 2rem;
+    text-align: center;
+    padding: 0.25em 0;
+  }
 }
 
 footer {

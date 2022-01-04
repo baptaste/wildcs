@@ -14,7 +14,8 @@ module.exports = {
     const { value } = req.body;
 
     try {
-      const foundMember = await db.query('SELECT name FROM member WHERE name=$1', [value]);
+      const foundMember = await db.query(`SELECT * FROM member WHERE name ILIKE '%${value}%'`);
+
       if (foundMember.rows.length !== 0) {
         console.log('Ce membre existe déjà. foundMember : ', foundMember);
         return res.json({

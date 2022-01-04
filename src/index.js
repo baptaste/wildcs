@@ -108,7 +108,11 @@ function createErrorMessage(message) {
 }
 
 function clearErrorMessage() {
-  if (requestError) document.querySelector('.errorField').innerHTML = ''
+  const errorFields = document.querySelectorAll('.errorField');
+  for (const errorField of errorFields) {
+    form.removeChild(errorField)
+  }
+  requestError = false
 }
 
 function clearAll() {
